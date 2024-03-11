@@ -1,22 +1,20 @@
-﻿//Задача 2: Напишите программу вычисления функции Аккермана с 
-//помощью рекурсии. Даны два неотрицательных числа m и n. 
+﻿//Задача 3: Задайте произвольный массив. Выведете его элементы, 
+//начиная с конца. Использовать рекурсию, не использовать циклы.
 
-static int Akkerman(int m, int n)
-{
-    if (m == 0)
-    {
-        return n + 1;
-    }
-    else if (m > 0 && n == 0)
-    {
-        return Akkerman(m - 1, 1);
-    }
-    else if (m > 0 && n > 0)
-    {
-        return Akkerman(m - 1, Akkerman(m, n - 1));
-    }
-    return -1;
+using System;
 
+class MainClass {
+public static void Main (string[] args) {
+int[] arr = {1, 2, 3, 4, 5};
+    PrintArrayFromEnd(arr, arr.Length-1);
 }
 
-Console.Write(Akkerman(0, 3));
+static void PrintArrayFromEnd(int[] arr, int index) {
+    if (index < 0) {
+        return;
+    } else {
+        Console.WriteLine(arr[index]);
+        PrintArrayFromEnd(arr, index - 1);
+    }
+}
+}
