@@ -1,24 +1,22 @@
-﻿//Задача 1: Задайте значения M и N. Напишите программу, которая 
-//выведет все натуральные числа в промежутке от M до N. 
-//Использовать рекурсию, не использовать циклы.
+﻿//Задача 2: Напишите программу вычисления функции Аккермана с 
+//помощью рекурсии. Даны два неотрицательных числа m и n. 
 
-static void recurs_natural(int m, int n)
+static int Akkerman(int m, int n)
 {
-    if (m > 0 && m <= n)
+    if (m == 0)
     {
-        Console.WriteLine(m);
+        return n + 1;
     }
-    else if (m > 0 && m >= n)
+    else if (m > 0 && n == 0)
     {
-        Console.WriteLine(m);
+        return Akkerman(m - 1, 1);
     }
-    if (m < n)
+    else if (m > 0 && n > 0)
     {
-        recurs_natural(m + 1, n);
+        return Akkerman(m - 1, Akkerman(m, n - 1));
     }
-    else if (m > n)
-    {
-        recurs_natural(m - 1, n);
-    }
+    return -1;
+
 }
-recurs_natural(20, -20);
+
+Console.Write(Akkerman(0, 3));
